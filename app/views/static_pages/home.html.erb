@@ -1,2 +1,39 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<h1>PLAYLIST</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Alphabetically sorted song list</h2>
+      <ul>
+        <li><b>Artist - Title</b></li>
+        <% @songs.each do |song| %>
+            <li><%= "#{song.title} - #{song.artist}" %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h2>Random playlist for today <%= Time.current.to_date %> </h2>
+
+      <% if @today_random_playlist %>
+      <h3>Playlist's title : <%= "#{@playlist.title}" %></h3>
+      <ul>
+        <li><b>Position - Artist - Title</b></li>
+        <% @today_random_playlist_contents.each do |content| %>
+            <li><%= "#{content.position} - #{content.song.artist} - #{content.song.title}" %></li>
+        <% end %>
+      </ul>
+      <% else %>
+          <h3>You have not yet generated your daily random playlist</h3>
+          <%= form_for(@playlist , :html => {:class => "contact-form"} ) do |f| %>
+
+              <%= f.hidden_field :title, :value => "playlist#{I18n.localize(Time.current.to_date, :format => '%Y%m%d')}" %>
+
+              <%= f.submit "SHUFFLE IT", class: "btn" %>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+
+
+
+</div>
