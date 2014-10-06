@@ -19,7 +19,7 @@
       <ul>
         <li><b>Position - Artist - Title</b></li>
         <% @today_random_playlist_contents.each do |content| %>
-            <li><%= "#{content.position} - #{content.song.artist} - #{content.song.title}" %></li>
+            <li><%= "#{content.position} - #{content.song.title} - #{content.song.artist}" %></li>
         <% end %>
       </ul>
       <% else %>

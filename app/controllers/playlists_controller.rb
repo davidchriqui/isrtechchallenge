@@ -7,7 +7,7 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.new(playlist_params)
 
     if @playlist.save
-      @random_song_list = Song.all.order("RAND()").limit(Song.count)
+      @random_song_list = randomize_playlist(Song.all)
       @position = 1
       @random_song_list.each do |song|
         @playlist_content = PlaylistContent.new
@@ -23,6 +23,10 @@ class PlaylistsController < ApplicationController
       flash[:error] = "You already have generated today's random playlist"
       redirect_to root_url
     end
+  end
+
+  def randomize_playlist(songs)
+    songs.shuffle
   end
 
   private
