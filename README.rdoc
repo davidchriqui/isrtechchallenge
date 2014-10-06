@@ -17,7 +17,7 @@ I use 3 models :
 
 
 The user interface is the view in app/views/static_pages/home.html.erb.
-This view displays at left an alphabetical ordered list of the N song stored in database.
+This view displays at left an alphabetically ordered list of the N song stored in database.
 At the right, this view displays the randomly generated playlist correspondig to the current day, if it has been generated, otherwise the view displays a "SHUFFLE IT" button to generate and store the daily random playlist.
 
 The random list of the N song is generated in the "playlist_controller" through the "randomize_playlist" method.
