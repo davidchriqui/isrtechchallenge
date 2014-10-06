@@ -1,28 +1,25 @@
-== README
+Israel Tech Challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+First question:
+You have a list of N songs. You want to play them all at a different random way each day. 
+In the language of your choosing, Write a function that creates that playlist.
+If a Rand() function exists, feel free to use it. 
 
-Things you may want to cover:
+Language used for the implementation : Ruby on Rails
 
-* Ruby version
+I use 3 models :
 
-* System dependencies
+-Song : to store title and artist,
 
-* Configuration
+-Playlist : to store the playlist's title and the creation date
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+-PlaylistContent : to store the songs in each playlist identified by the playlist_id attribute, the model contains the song_id and the position associated to the song in the random playlist
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+The user interface is the view in app/views/static_pages/home.html.erb.
+This view displays at left an alphabetical ordered list of the N song stored in database.
+At the right, this view displays the randomly generated playlist correspondig to the current day if it has been generated, otherwise th view displays a "SHUFFLE IT" button to generate and store the daily random playlist.
+The random list of the N song is generated in the "playlist_controller".
+We just use the Ruby "shuffle" method on the array containing all the songs recorded in database and that returns a random array of those songs.
+
+I take care to do a "uniqueness validation" on the playlist title attribute in order to let the user generating once a day a random playlist.
