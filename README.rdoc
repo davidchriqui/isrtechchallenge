@@ -23,5 +23,6 @@ At the right, this view displays the randomly generated playlist correspondig to
 The random list of the N song is generated in the "playlist_controller" through the "randomize_playlist" method.
 
 We just use the Ruby "shuffle" method on the array containing all the songs recorded in database and that returns a random array of those songs.
+We could also use the SQL rand() function in the song model to retrieve a random list of songs.
 
 I take care to do a "uniqueness validation" on the playlist title attribute in order to let the user generating once a day a random playlist.
